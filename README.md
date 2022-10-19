@@ -1,0 +1,2 @@
+# connpass_to_timetree
+connpassのイベントをtimetreeのカレンダーに登録するシステム
