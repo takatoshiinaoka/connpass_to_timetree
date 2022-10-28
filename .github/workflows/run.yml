@@ -20,6 +20,8 @@ jobs:
           python-version: '3.8'
           # Optional - x64 or x86 architecture, defaults to x64
           architecture: 'x64'
+      - name: pip install
+        run: pip install -r requirements.txt
       - name: make env
         run: touch ./.env
       - name: set env1
@@ -37,7 +39,5 @@ jobs:
               env TIMETREE_BASEURL=${{ secrets.TIMETREE_BASEURL }}
               env CALENDAR_ID=${{ secrets.CALENDAR_ID }}
               env NICKNAME=${{ secrets.NICKNAME }}
-      - name: pip install
-        run: pip install -r requirements.txt
       - name: run main.py
         run: python src/main.py
