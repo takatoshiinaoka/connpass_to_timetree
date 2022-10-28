@@ -22,10 +22,10 @@ jobs:
           architecture: 'x64'
       - name: set env
         run: |
-          env TIMETREE_TOKEN=${{ secrets.TIMETREE_TOKEN }}
-          env TIMETREE_BASEURL=${{ secrets.TIMETREE_BASEURL }}
-          env CALENDAR_ID=${{ secrets.CALENDAR_ID }}
-          env NICKNAME=${{ secrets.NICKNAME }}
+          echo TIMETREE_TOKEN=${{ secrets.TIMETREE_TOKEN }}
+          echo TIMETREE_BASEURL=${{ secrets.TIMETREE_BASEURL }}
+          echo CALENDAR_ID=${{ secrets.CALENDAR_ID }}
+          echo NICKNAME=${{ secrets.NICKNAME }}
       - name: pip install
         run: pip install -r requirements.txt
       - name: run main.py
