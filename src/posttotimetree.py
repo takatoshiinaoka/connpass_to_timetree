@@ -10,7 +10,7 @@ json_open = open('./test.json', 'r')
 json_load = json.load(json_open)
 TOKEN = os.environ.get('TIMETREE_TOKEN')
 TIMETREE_BASEURL = os.environ.get('TIMETREE_BASEURL')
-CALENDAR_ID = os.environ.get('CALENDAR_ID')
+CALENDAR_ID = os.environ.get('TIMETREE_CALENDAR_ID')
 today = datetime.date.today()
 
 headers = {'Authorization': f"Bearer {TOKEN}"}

@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv('./.env')
 
-nickname = os.environ.get('NICKNAME')
+nickname = os.environ.get('CONNPASS_NICKNAME')
 responce = requests.get(f"https://connpass.com/api/v1/event/?count=100&nickname={nickname}").json()
 events = responce["events"]
 
