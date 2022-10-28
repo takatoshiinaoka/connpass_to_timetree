@@ -4,6 +4,7 @@ connpassのイベントをtimetreeのカレンダーに登録するシステム
 ## 使い方(Github Actions)
 - このリポジトリをフォークします。
 - Github Actionsの環境変数を設定します。
+- events.jsonの中を ```[]``` にしてください
 
 ## 使い方(ローカル)
 pipenvがない場合はインストールします。
@@ -22,6 +23,10 @@ pipenv shell
 .envファイルを作成し、環境変数を設定します。
 ```
 cp .env.example .env
+```
+vents.jsonを初期化してください。
+```
+[]
 ```
 実行します。
 ```
