@@ -9,9 +9,9 @@ CALENDAR_ID = args[3]
 nickname = args[4]
 
 # JsonからTimeTreeに登録済みのイベントID読み込み
-json_open = open('./events.json', 'r')
-jsonArray = json.load(json_open)
-print(jsonArray)
+json_file = open('./events.json', 'r')
+jsonArray = json.load(json_file)
+json_file.close()
 
 # Connpassからイベント取得
 responce = requests.get(f"https://connpass.com/api/v1/event/?count=100&nickname={nickname}").json()
@@ -64,7 +64,6 @@ for id in diff_id:
             post_timetree(event,TIMETREE_BASEURL,CALENDAR_ID)
 
 # TimeTreeに登録したイベントIDの情報を更新
-path = './events.json'
-json_file = open(path, mode="w")
+json_file = open('./events.json', mode="w")
 json.dump(connpassArray, json_file, ensure_ascii=False)
 json_file.close()
