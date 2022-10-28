@@ -22,21 +22,23 @@ jobs:
           architecture: 'x64'
       - name: pip install
         run: pip install -r requirements.txt
-      - name: make env
-        run: touch ./.env
-      - name: set env1
-        run: echo TIMETREE_TOKEN=${{ secrets.TIMETREE_TOKEN }} >> .env\
-              echo HOGE=hello >> .env\
-              echo TIMETREE_BASEURL=${{ secrets.TIMETREE_BASEURL }} >> .env\
-              echo CALENDAR_ID=${{ secrets.CALENDAR_ID }} >> .env\
-              echo NICKNAME=${{ secrets.NICKNAME }} >> .env
-      - name: cat env1
-        run: cat ./.env
-      - name: set env and run main.py
-        run: |
-              env TIMETREE_TOKEN=${{ secrets.TIMETREE_TOKEN }}
-              env HOGE=hello
-              env TIMETREE_BASEURL=${{ secrets.TIMETREE_BASEURL }}
-              env CALENDAR_ID=${{ secrets.CALENDAR_ID }}
-              env NICKNAME=${{ secrets.NICKNAME }}
-              python src/main.py
+      - name: run main.py
+        run: python src/main.py ${{ secrets.TIMETREE_TOKEN }} ${{ secrets.TIMETREE_BASEURL }} ${{ secrets.CALENDAR_ID }} ${{ secrets.NICKNAME }}    
+      # - name: make env
+      #   run: touch ./.env
+      # - name: set env1
+      #   run: echo TIMETREE_TOKEN=${{ secrets.TIMETREE_TOKEN }} >> .env\
+      #         echo HOGE=hello >> .env\
+      #         echo TIMETREE_BASEURL=${{ secrets.TIMETREE_BASEURL }} >> .env\
+      #         echo CALENDAR_ID=${{ secrets.CALENDAR_ID }} >> .env\
+      #         echo NICKNAME=${{ secrets.NICKNAME }} >> .env
+      # - name: cat env1
+      #   run: cat ./.env
+      # - name: set env and run main.py
+      #   run: |
+      #         env TIMETREE_TOKEN=${{ secrets.TIMETREE_TOKEN }}
+      #         env HOGE=hello
+      #         env TIMETREE_BASEURL=${{ secrets.TIMETREE_BASEURL }}
+      #         env CALENDAR_ID=${{ secrets.CALENDAR_ID }}
+      #         env NICKNAME=${{ secrets.NICKNAME }}
+      #         python src/main.py
