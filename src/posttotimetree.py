@@ -3,15 +3,24 @@
 from dataclasses import dataclass
 import requests
 import json
-import urllib.parse
 
 import os
 from dotenv import load_dotenv
 load_dotenv('./.env')
 
 
+'''
+# requestsのパラメータ指定
+url = 'https://www.google.co.jp/search'
+params = {'q': '日本代表', 'tbm': 'nws'}
+r = requests.get(url, params=params)
+print(r.url)
+'''
+
+
 TOKEN = os.environ.get('TIMETREE_TOKEN')
 TIMETREE_BASEURL = os.environ.get('TIMETREE_BASEURL')
+CALENDAR_ID = "3Lx05Ua8aDVY"
 
 headers = {'Authorization': f"Bearer {TOKEN}"}
 data = {
@@ -40,7 +49,9 @@ data = {
 
 
 
-private = requests.post("https://timetreeapis.com/calendars/3Lx05Ua8aDVY/events/", json=data, headers=headers)
+private = requests.post(f"{TIMETREE_BASEURL}/calendars/{CALENDAR_ID}/events/", json=data, headers=headers)
 print(private.json())
+
+# print(f"{TIMETREE_BASEURL}/calendars/{CALENDAR_ID}/events/")
 
 
