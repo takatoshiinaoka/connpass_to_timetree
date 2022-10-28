@@ -56,9 +56,8 @@ def post_timetree(event,TIMETREE_BASEURL,CALENDAR_ID):
         }
     }
     url = f"{TIMETREE_BASEURL}/calendars/{CALENDAR_ID}/events/"
-    # print(url)
-    # result = requests.post(url, json=data, headers=headers)
-    # print(result.json())
+    result = requests.post(url, json=data, headers=headers)
+    print(result.json())
 
 # 新しいイベントをTimeTreeに登録
 for id in diff_id:
