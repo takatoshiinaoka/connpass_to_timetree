@@ -24,6 +24,7 @@ jobs:
         run: touch ./.env
       - name: set env
         run: echo TIMETREE_TOKEN=${{ secrets.TIMETREE_TOKEN }}"\n"\
+                  HOGE=hello"\n"\
                   TIMETREE_BASEURL=${{ secrets.TIMETREE_BASEURL }}"\n"\
                   CALENDAR_ID=${{ secrets.CALENDAR_ID }}"\n"\
                   NICKNAME=${{ secrets.NICKNAME }} >> .env
