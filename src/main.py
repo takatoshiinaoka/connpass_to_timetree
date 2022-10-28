@@ -13,8 +13,6 @@ json_open = open('./events.json', 'r')
 jsonArray = json.load(json_open)
 print(jsonArray)
 
-
-
 # Connpassからイベント取得
 responce = requests.get(f"https://connpass.com/api/v1/event/?count=100&nickname={nickname}").json()
 events = responce["events"]
