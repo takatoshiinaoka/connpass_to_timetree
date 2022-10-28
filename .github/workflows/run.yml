@@ -21,7 +21,7 @@ jobs:
       - name: run main.py
         run: python src/main.py ${{ secrets.TIMETREE_TOKEN }} ${{ secrets.TIMETREE_BASEURL }} ${{ secrets.TIMETREE_CALENDAR_ID }} ${{ secrets.CONNPASS_NICKNAME }}    
       - name: git commit
-        run: run: |
+        run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git add events.json
