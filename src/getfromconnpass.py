@@ -14,7 +14,11 @@ print("results_available:", responce["results_available"])
 print("events length:",len(events))
 # print(events)
 
+event_id = []
+for event in events:
+    event_id.append(event["event_id"])
+
 path = './events.json'
 json_file = open(path, mode="w")
-json.dump(events, json_file, ensure_ascii=False)
+json.dump(event_id, json_file, ensure_ascii=False)
 json_file.close()

@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 import requests
 import json
-
+import datetime
 import os
 from dotenv import load_dotenv
 load_dotenv('./.env')
@@ -11,26 +11,27 @@ json_load = json.load(json_open)
 TOKEN = os.environ.get('TIMETREE_TOKEN')
 TIMETREE_BASEURL = os.environ.get('TIMETREE_BASEURL')
 CALENDAR_ID = os.environ.get('CALENDAR_ID')
+today = datetime.date.today()
 
 headers = {'Authorization': f"Bearer {TOKEN}"}
 data = {
     "data": {
         "attributes": {
             "category": "schedule",
-            "title": json_load["title"],
+            "title": "これはテストです😊",
             "all_day": "false",
-            "start_at": json_load["started_at"],
+            "start_at": f"{today}T00:00:00.000Z",
             "start_timezone": "UTC",
-            "end_at": json_load["ended_at"],
+            "end_at": f"{today}T12:00:00.000Z",
             "end_timezone": "UTC",
-            "description": json_load["description"],
-            "location":json_load["place"],
-            "url": json_load["event_url"]
+            "description": "",
+            "location": "オンライン(YouTube)",
+            "url": "https://github.com"
         },
         "relationships": {
             "label": {
                 "data": {
-                    "id": "${calendar_id},5", 
+                    "id": "${calendar_id},2", 
                     "type": "label"
                 }
             }
