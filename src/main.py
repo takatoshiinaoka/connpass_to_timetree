@@ -1,28 +1,18 @@
 import requests
 import json
 import sys
-# import os
-# from dotenv import load_dotenv
-# load_dotenv('./.env')
 args = sys.argv
-
-# TOKEN = os.environ.get('TIMETREE_TOKEN')
-# TIMETREE_BASEURL = os.environ.get('TIMETREE_BASEURL')
-# CALENDAR_ID = os.environ.get('CALENDAR_ID')
 
 TOKEN = args[1]
 TIMETREE_BASEURL = args[2]
 CALENDAR_ID = args[3]
 nickname = args[4]
 
-print(TOKEN,TIMETREE_BASEURL,CALENDAR_ID,nickname)
-
 # JsonからTimeTreeに登録済みのイベントID読み込み
 json_open = open('./events.json', 'r')
 jsonArray = json.load(json_open)
 
 # Connpassからイベント取得
-# nickname = os.environ.get('NICKNAME')
 responce = requests.get(f"https://connpass.com/api/v1/event/?count=100&nickname={nickname}").json()
 events = responce["events"]
 
@@ -33,11 +23,10 @@ for event in events:
 
 # JsonとConnpassのイベントの差分を取得
 diff_id = set(connpassArray) ^ set(jsonArray) 
-# print("diff:",diff_id) # 新しく登録したイベント
 
 # TimeTreeに登録する関数
 def post_timetree(event,TIMETREE_BASEURL,CALENDAR_ID):
-    print("Hello",event["event_id"])
+    print("新しく登録したイベント:",event["event_id"],event["title"])
     headers = {'Authorization': f"Bearer {TOKEN}"}
     data = {
         "data": {
@@ -79,4 +68,3 @@ path = './events.json'
 json_file = open(path, mode="w")
 json.dump(connpassArray, json_file, ensure_ascii=False)
 json_file.close()
-

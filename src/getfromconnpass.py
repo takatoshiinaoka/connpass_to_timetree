@@ -1,17 +1,18 @@
 import requests
 import json
+import os
+from dotenv import load_dotenv
+load_dotenv('./.env')
 
-responce = requests.get("https://connpass.com/api/v1/event/?count=100&nickname=inaoka01").json()
+nickname = os.environ.get('NICKNAME')
+responce = requests.get(f"https://connpass.com/api/v1/event/?count=100&nickname={nickname}").json()
 events = responce["events"]
 
 print("results_start:", responce["results_start"])
 print("results_returned", responce["results_returned"])
 print("results_available:", responce["results_available"])
 print("events length:",len(events))
-
-print(events)
-# for i,event in events:
-#     print(i,event["title"])
+# print(events)
 
 path = './events.json'
 json_file = open(path, mode="w")

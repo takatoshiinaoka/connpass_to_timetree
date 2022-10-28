@@ -1,5 +1,3 @@
-# from email import header
-# from unittest import result
 from dataclasses import dataclass
 import requests
 import json
@@ -10,22 +8,9 @@ load_dotenv('./.env')
 
 json_open = open('./test.json', 'r')
 json_load = json.load(json_open)
-
-
-
-'''
-# requestsのパラメータ指定
-url = 'https://www.google.co.jp/search'
-params = {'q': '日本代表', 'tbm': 'nws'}
-r = requests.get(url, params=params)
-print(r.url)
-'''
-
-
 TOKEN = os.environ.get('TIMETREE_TOKEN')
 TIMETREE_BASEURL = os.environ.get('TIMETREE_BASEURL')
 CALENDAR_ID = os.environ.get('CALENDAR_ID')
-print(TIMETREE_BASEURL,CALENDAR_ID)
 
 headers = {'Authorization': f"Bearer {TOKEN}"}
 data = {
@@ -53,11 +38,5 @@ data = {
     }
 }
 
-
-
 private = requests.post(f"{TIMETREE_BASEURL}/calendars/{CALENDAR_ID}/events/", json=data, headers=headers)
 print(private.json())
-
-# print(f"{TIMETREE_BASEURL}/calendars/{CALENDAR_ID}/events/")
-
-
