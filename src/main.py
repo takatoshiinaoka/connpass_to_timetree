@@ -4,7 +4,6 @@ import os
 from dotenv import load_dotenv
 load_dotenv('./.env')
 
-print(os.environ['SHELL'])
 TOKEN = os.environ.get('TIMETREE_TOKEN')
 TIMETREE_BASEURL = os.environ.get('TIMETREE_BASEURL')
 CALENDAR_ID = os.environ.get('CALENDAR_ID')
