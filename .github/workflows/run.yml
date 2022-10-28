@@ -18,9 +18,11 @@ jobs:
           architecture: 'x64'
       - name: list
         run: ls -al
-      - name: change mod
+      - name: change mode
         run: chmod 777 events.json
       - name: pip install
         run: pip install -r requirements.txt
       - name: run main.py
         run: python src/main.py ${{ secrets.TIMETREE_TOKEN }} ${{ secrets.TIMETREE_BASEURL }} ${{ secrets.TIMETREE_CALENDAR_ID }} ${{ secrets.CONNPASS_NICKNAME }}    
+      - name: cat json
+        run: cat events.json
