@@ -20,11 +20,15 @@ jobs:
           python-version: '3.8'
           # Optional - x64 or x86 architecture, defaults to x64
           architecture: 'x64'
+      - name: make env
+        run: touch ./.env
       - name: set env
-        run: |
-          touch ./.env
-          sh env.sh
-          cat ./.env
+        run: echo TIMETREE_TOKEN=${{ secrets.TIMETREE_TOKEN }}"\n"\
+                  TIMETREE_BASEURL=${{ secrets.TIMETREE_BASEURL }}"\n"\
+                  CALENDAR_ID=${{ secrets.CALENDAR_ID }}"\n"\
+                  NICKNAME=${{ secrets.NICKNAME }} >> .env
+      - name: cat env
+        run: cat ./.env
       - name: pip install
         run: pip install -r requirements.txt
       - name: run main.py
