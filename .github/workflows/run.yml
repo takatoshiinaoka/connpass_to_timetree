@@ -32,12 +32,11 @@ jobs:
               echo NICKNAME=${{ secrets.NICKNAME }} >> .env
       - name: cat env1
         run: cat ./.env
-      - name: set env2
+      - name: set env and run main.py
         run: |
               env TIMETREE_TOKEN=${{ secrets.TIMETREE_TOKEN }}
               env HOGE=hello
               env TIMETREE_BASEURL=${{ secrets.TIMETREE_BASEURL }}
               env CALENDAR_ID=${{ secrets.CALENDAR_ID }}
               env NICKNAME=${{ secrets.NICKNAME }}
-      - name: run main.py
-        run: python src/main.py
+              python src/main.py
