@@ -48,7 +48,7 @@ def post_timetree(event,TIMETREE_BASEURL,CALENDAR_ID):
             "relationships": {
                 "label": {
                     "data": {
-                        "id": "${calendar_id},5", 
+                        "id": "${calendar_id},8", 
                         "type": "label"
                     }
                 }
