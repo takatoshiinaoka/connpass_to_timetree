@@ -4,11 +4,11 @@ import os
 from dotenv import load_dotenv
 load_dotenv('./.env')
 
-TOKEN = os.environ['TIMETREE_TOKEN']
-TIMETREE_BASEURL = os.environ['TIMETREE_BASEURL']
-CALENDAR_ID = os.environ['CALENDAR_ID']
-print(TIMETREE_BASEURL,CALENDAR_ID)
 print(os.environ['SHELL'])
+TOKEN = os.environ.get('TIMETREE_TOKEN')
+TIMETREE_BASEURL = os.environ.get('TIMETREE_BASEURL')
+CALENDAR_ID = os.environ.get('CALENDAR_ID')
+print(TIMETREE_BASEURL,CALENDAR_ID)
 
 # JsonからTimeTreeに登録済みのイベントID読み込み
 json_open = open('./events.json', 'r')
