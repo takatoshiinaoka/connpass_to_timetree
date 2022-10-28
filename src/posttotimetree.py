@@ -8,6 +8,10 @@ import os
 from dotenv import load_dotenv
 load_dotenv('./.env')
 
+json_open = open('./test.json', 'r')
+json_load = json.load(json_open)
+
+
 
 '''
 # requestsのパラメータ指定
@@ -20,26 +24,27 @@ print(r.url)
 
 TOKEN = os.environ.get('TIMETREE_TOKEN')
 TIMETREE_BASEURL = os.environ.get('TIMETREE_BASEURL')
-CALENDAR_ID = "3Lx05Ua8aDVY"
+CALENDAR_ID = os.environ.get('CALENDAR_ID')
 
 headers = {'Authorization': f"Bearer {TOKEN}"}
 data = {
     "data": {
         "attributes": {
             "category": "schedule",
-            "title": "これはテストです😊",
+            "title": json_load["title"],
             "all_day": "false",
-            "start_at": "2022-10-20T00:00:00.000Z",
+            "start_at": json_load["started_at"],
             "start_timezone": "UTC",
-            "end_at": "2022-10-20T06:00:00.000Z",
+            "end_at": json_load["ended_at"],
             "end_timezone": "UTC",
-            "description": "これはテストです",
-            "url": "https://example.com"
+            "description": json_load["description"],
+            "location":json_load["place"],
+            "url": json_load["event_url"]
         },
         "relationships": {
             "label": {
                 "data": {
-                    "id": "${calendar_id},2",
+                    "id": "${calendar_id},5", 
                     "type": "label"
                 }
             }
