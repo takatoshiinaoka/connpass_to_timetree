@@ -23,10 +23,10 @@ jobs:
       - name: make env
         run: touch ./.env
       - name: set env
-        run: echo TIMETREE_TOKEN=${{ secrets.TIMETREE_TOKEN }} >> .env
-              echo HOGE=hello >> .env
-              echo TIMETREE_BASEURL=${{ secrets.TIMETREE_BASEURL }} >> .env
-              echo CALENDAR_ID=${{ secrets.CALENDAR_ID }} >> .env
+        run: echo TIMETREE_TOKEN=${{ secrets.TIMETREE_TOKEN }} >> .env\
+              echo HOGE=hello >> .env\
+              echo TIMETREE_BASEURL=${{ secrets.TIMETREE_BASEURL }} >> .env\
+              echo CALENDAR_ID=${{ secrets.CALENDAR_ID }} >> .env\
               echo NICKNAME=${{ secrets.NICKNAME }} >> .env
       - name: cat env
         run: cat ./.env
