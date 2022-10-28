@@ -2,16 +2,13 @@ name: Python package
 
 on:
   workflow_dispatch:
-  
   schedule:
     # 分 時 日 月 曜日
     - cron:  "0 * * * *" 
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python 3.x
@@ -23,4 +20,3 @@ jobs:
         run: pip install -r requirements.txt
       - name: run main.py
         run: python src/main.py ${{ secrets.TIMETREE_TOKEN }} ${{ secrets.TIMETREE_BASEURL }} ${{ secrets.CALENDAR_ID }} ${{ secrets.NICKNAME }}    
-
