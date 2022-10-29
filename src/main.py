@@ -4,9 +4,8 @@ import sys
 args = sys.argv
 
 TOKEN = args[1]
-TIMETREE_BASEURL = args[2]
-CALENDAR_ID = args[3]
-nickname = args[4]
+CALENDAR_ID = args[2]
+nickname = args[3]
 
 # JsonからTimeTreeに登録済みのイベントID読み込み
 json_file = open('./events.json', 'r')
@@ -26,8 +25,8 @@ for event in events:
 diff_id = set(connpassArray) ^ set(jsonArray) 
 
 # TimeTreeに登録する関数
-def post_timetree(event,TIMETREE_BASEURL,CALENDAR_ID):
-    print("新しく登録したイベント:",event["event_id"],event["title"])
+def post_timetree(event, TIMETREE_BASEURL, CALENDAR_ID):
+    print(f"New Event id:'{event['event_id']}', title:'{event['title']}'")
     headers = {'Authorization': f"Bearer {TOKEN}"}
     data = {
         "data": {
@@ -57,11 +56,16 @@ def post_timetree(event,TIMETREE_BASEURL,CALENDAR_ID):
     result = requests.post(url, json=data, headers=headers)
     print(result.json())
 
+# イベントが更新されてない
+if(not diff_id):
+    sys.exit("The event has not been updated.")  
+
 # 新しいイベントをTimeTreeに登録
+TIMETREE_BASEURL = "https://timetreeapis.com"
 for id in diff_id:
     for event in events:
         if(event["event_id"] == id):
-            post_timetree(event,TIMETREE_BASEURL,CALENDAR_ID)
+            post_timetree(event, TIMETREE_BASEURL, CALENDAR_ID)
 
 # TimeTreeに登録したイベントIDの情報を更新
 json_file = open('./events.json', mode="w")
