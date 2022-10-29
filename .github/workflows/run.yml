@@ -25,5 +25,5 @@ jobs:
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git add events.json
-          git commit -m 'commit'
+          git commit --allow-empty -m 'commit'
           git push origin main
