@@ -1,4 +1,4 @@
-name: Python package
+name: connpass to timetree
 
 on:
   workflow_dispatch:
