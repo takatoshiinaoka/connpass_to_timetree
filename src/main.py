@@ -58,7 +58,8 @@ def post_timetree(event, TIMETREE_BASEURL, CALENDAR_ID):
 
 # イベントが更新されてない
 if(not diff_id):
-    sys.exit("The event has not been updated.")  
+    print("The event has not been updated.")
+    sys.exit(0)
 
 # 新しいイベントをTimeTreeに登録
 TIMETREE_BASEURL = "https://timetreeapis.com"
